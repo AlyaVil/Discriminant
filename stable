@@ -1,0 +1,56 @@
+public class Main {
+    public static void main(String[] args) {
+
+        solveAnyEquation(1, 2, 1);
+        solveAnyEquation(1, 2, 2);
+        solveAnyEquation(1, 2, 0);
+
+        solveAnyEquation(0, 0, 1);
+        solveAnyEquation(0, 36, 1);
+
+    }
+
+    private static void solveAnyEquation(double a, double b, double c) {
+        if (a == 0) {
+            solveLineEquation(b, c);
+        } else {
+            solveQuadEquation(a, b, c);
+        }
+    }
+
+    private static void solveQuadEquation(double a, double b, double c) {
+        double d = calculateDiscriminant(a, b, c);
+        double x1, x2;
+        if (d == 0) {
+            x1 = -b / 2 * a;
+            System.out.println("Main:solveQuadEquation(a=" + a + ",b=" + b + ",c=" + c + "):  x1= " + x1);// 1 root
+        } else {
+            if (d > 0) {
+                x1 = (-b + Math.sqrt(d)) / 2 * a;
+                x2 = (-b - Math.sqrt(d)) / 2 * a;
+                System.out.println("Main:solveQuadEquation(a=" + a + ",b=" + b + ",c=" + c + "):  x1= " + x1 + ", x2=" + x2 + "");// 2 roots
+            } else {
+                System.out.println("Main:solveQuadEquation(a=" + a + ",b=" + b + ",c=" + c + "):  no roots");//0 root
+            }
+        }
+    }
+
+
+    private static double calculateDiscriminant(double a, double b, double c) {
+        return b * b - 4 * a * c;
+    }
+
+
+    private static void solveLineEquation(double b, double c) {
+        
+        double x1;//bx+c=0  bx=-c x=-c/b
+        if (b!=0){
+             x1=-c/b;
+            System.out.println("Main:solveLineEquation(b=" + b + ",c=" + c + "):  x1= " + x1);
+        } else{
+            System.out.println("Main:solveLineEquation(b=" + b + ",c=" + c + "): no roots");
+            
+        }
+       
+    }
+}
